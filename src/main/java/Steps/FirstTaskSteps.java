@@ -2,24 +2,19 @@ package Steps;
 
 import Pages.AddNewAddressPage;
 import Pages.LoginPage;
-import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Project_firstTask {
-
-    public WebDriver driver;
+public class FirstTaskSteps {
+    private WebDriver driver;
     AddNewAddressPage addNewAddressPage;
 
     @Given("^user has an open browser with open coderslab shop$")
     public void user_has_open_browser_with_open_coderslab_shop() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = CommonDriver.getDriver();
         driver.get("https://prod-kurs.coderslab.pl/index.php");
     }
 
@@ -44,11 +39,5 @@ public class Project_firstTask {
     public void user_can_delete_the_address () {
         addNewAddressPage = new AddNewAddressPage(driver);
         addNewAddressPage.delete_the_address();
-
     }
-    @After
-    public void closeTheBrowser() {
-        driver.quit();
-    }
-
 }

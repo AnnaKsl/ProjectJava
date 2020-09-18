@@ -44,6 +44,7 @@ public class AddNewAddressPage {
     }
     public void information_about_address_update (String alias, String address, String city, String postcode) {
         System.out.println("method is working");
+        Assert.assertNotNull(addressBody);
         for (WebElement oneAddress: addressBody) {
             String singleAddress = oneAddress.getText();
             Assert.assertTrue(singleAddress.contains(alias));

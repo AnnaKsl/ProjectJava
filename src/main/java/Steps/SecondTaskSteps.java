@@ -4,29 +4,23 @@ import Pages.ChooseItemDetailsPage;
 import Pages.LoginPage;
 import Pages.SearchForTheItemPage;
 import Pages.UserShoppingCard;
-import cucumber.api.java.After;
 import cucumber.api.java.en.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 
-public class Project_secondTask {
+public class SecondTaskSteps {
     private WebDriver driver;
 
     @Given("^user has an open page of CodersLab store$")
     public void user_has_an_open_page_of_CodersLab_store(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver = CommonDriver.getDriver();
         driver.get("https://prod-kurs.coderslab.pl/index.php");
     }
 
@@ -63,21 +57,12 @@ public class Project_secondTask {
         UserShoppingCard user_shoppingCard = new UserShoppingCard(driver);
         user_shoppingCard.proceed_to_checkout();
         user_shoppingCard.confirm_personal_information();
-
     }
 
     @Then("^it is possible to make screenshot of the order$")
     public void take_screenshot_of_the_order () throws IOException {
-        TakesScreenshot ts = (TakesScreenshot)driver;
+        TakesScreenshot ts = (TakesScreenshot) driver;
         File order = ts.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(order, new File("./Screenshots/Order.png"));
-        System.out.println("the Screenshot is taken");
-        System.out.println(order.getAbsolutePath());
-
-    }
-
-    @After
-    public void cleanUp() {
-        driver.quit();
     }
 }
