@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class AddNewAddress {
+public class AddNewAddressPage {
 
     public WebDriver driver;
     @FindBy(id = "addresses-link") WebElement UserAddress;
@@ -27,7 +27,7 @@ public class AddNewAddress {
 
 
 
-    public AddNewAddress( WebDriver driver) {
+    public AddNewAddressPage(WebDriver driver) {
         this.driver= driver;
         PageFactory.initElements(driver, this);
     }

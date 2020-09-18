@@ -13,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
 
-public class ChooseItemDetails {
+public class ChooseItemDetailsPage {
     public WebDriver driver;
 
     @FindBy(id = "quantity_wanted")
     WebElement chooseQuantity;
 
-    public ChooseItemDetails(WebDriver driver) {
+    public ChooseItemDetailsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 

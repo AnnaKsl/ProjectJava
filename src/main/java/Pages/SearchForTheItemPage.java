@@ -7,12 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class SearchforTheItem {
+public class SearchForTheItemPage {
     private WebDriver driver;
     @FindBy(name = "s")  WebElement searchInput;
     @FindBy(css="h2.product-title") List<WebElement> foundProducts;
 
-    public SearchforTheItem (WebDriver driver){
+    public SearchForTheItemPage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }

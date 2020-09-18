@@ -1,11 +1,11 @@
 package Steps;
 
-import Pages.ChooseItemDetails;
+import Pages.ChooseItemDetailsPage;
 import Pages.LoginPage;
-import Pages.SearchforTheItem;
-import Pages.User_shopping_card;
+import Pages.SearchForTheItemPage;
+import Pages.UserShoppingCard;
+import cucumber.api.java.After;
 import cucumber.api.java.en.*;
-import cucumber.api.java.eo.Se;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -38,33 +38,31 @@ public class Project_secondTask {
 
     @Then("^user finds the item (.*)$")
     public void user_finds_the_item(String item){
-        SearchforTheItem search = new SearchforTheItem(driver);
+        SearchForTheItemPage search = new SearchForTheItemPage(driver);
         search.SearchTheItem(item);
     }
 
     @Then("^user is able to choose the size (.*) and the quantity (.*) and adds the product$")
     public void user_is_able_to_choose_the_size_and_the_quantity_and_add_the_product(String size, String quantity){
-        ChooseItemDetails chooseItemDetails = new ChooseItemDetails(driver);
-        chooseItemDetails.checkIfDiscountIsCorrect();
-        chooseItemDetails.chooseSize(size);
-        chooseItemDetails.chooseQuantity(quantity);
-        chooseItemDetails.addItemToCard();
-
-
+        ChooseItemDetailsPage chooseItemDetailsPage = new ChooseItemDetailsPage(driver);
+        chooseItemDetailsPage.checkIfDiscountIsCorrect();
+        chooseItemDetailsPage.chooseSize(size);
+        chooseItemDetailsPage.chooseQuantity(quantity);
+        chooseItemDetailsPage.addItemToCard();
 
     }
 
     @Then("^user goes to checkout option and confirms the address$")
     public void user_goes_to_checkout_option_and_confirms_the_address(){
-        ChooseItemDetails chooseItemDetails = new ChooseItemDetails(driver);
-        chooseItemDetails.proceedToCheckout();
+        ChooseItemDetailsPage chooseItemDetailsPage = new ChooseItemDetailsPage(driver);
+        chooseItemDetailsPage.proceedToCheckout();
     }
 
     @Then("^user chooses the delivery method,payment option and clicks \"order with an obligation to pay\"$")
     public void user_chooses_the_delivery_method_and_payment_option() {
-        User_shopping_card user_shopping_card = new User_shopping_card(driver);
-        user_shopping_card.proceed_to_checkout();
-        user_shopping_card.confirm_personal_information();
+        UserShoppingCard user_shoppingCard = new UserShoppingCard(driver);
+        user_shoppingCard.proceed_to_checkout();
+        user_shoppingCard.confirm_personal_information();
 
     }
 
@@ -76,5 +74,10 @@ public class Project_secondTask {
         System.out.println("the Screenshot is taken");
         System.out.println(order.getAbsolutePath());
 
+    }
+
+    @After
+    public void cleanUp() {
+        driver.quit();
     }
 }

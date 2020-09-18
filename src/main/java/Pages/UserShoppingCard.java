@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class User_shopping_card {
+public class UserShoppingCard {
     public WebDriver driver;
 
-    public User_shopping_card(WebDriver driver) {
+    public UserShoppingCard(WebDriver driver) {
         this.driver = driver;
     }
 
